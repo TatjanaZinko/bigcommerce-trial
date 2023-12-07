@@ -186,7 +186,7 @@
 .navPages-action {
     color: stencilColor("navPages-color");
     display: block;
-    font-size: fontSize("smaller");
+    font-size: 16px;
     font-weight: fontWeight("bold");
     padding: spacing("half") 0;
     text-decoration: none;
@@ -198,6 +198,11 @@
 
         &.is-open {
             background-color: $navPage-subMenu-item--is-highlighted-background;
+            color: #ffffff;
+
+            &:hover {
+                color: #ffffff;
+            }
         }
     }
 
@@ -278,15 +283,16 @@
 .navPage-childList {
     @extend %navPage-childList;
     display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 250px;
+    background-color: stencilColor("navPages-subMenu-backgroundColor");
+    padding: spacing("half") spacing("half") spacing("half") !important;    
 
     @include breakpoint("medium") {
         border: 0;
-        display: block;
-    }
-
-    &.is-open {
-        display: block;
-    }
+    }   
 
     .navPage-subMenu-action:not(.navPages-action-depth-max) + & {
         margin-left: spacing("double"); //
@@ -311,19 +317,12 @@
 
     @include breakpoint("medium") {
         background-color: stencilColor("navPages-subMenu-backgroundColor");
-        padding: spacing("single") spacing("single") (spacing("single") + spacing("half")) !important;
         position: absolute;
         text-align: left;
 
         &.is-open {
             display: block;
-            left: 0;
-            width: 100%;
-        }
-
-        .navPages-action-moreIcon {
-            display: none;
-        }
+        }        
     }
 
     &.is-open {
@@ -332,11 +331,7 @@
 
     .navPages-list:not(.navPages-list-depth-max) .navPages-action.has-subMenu + & {
         .navPage-subMenu-list {
-            margin-right: 0;
-
-            @include breakpoint("medium") {
-                margin-right: auto;
-            }
+            margin: 0;
         }
     }
 }
@@ -375,19 +370,22 @@
 
 .navPage-subMenu-item {
     padding: spacing("half") 0;
+    position: relative;
+    min-width: 250px;
 
     @include breakpoint("medium") {
-        @include grid-column(3);
         padding: 0 0.75rem !important; // 1
 
         .navPages-action {
             text-transform: none;
             width: 100%;
-        }
+        }        
+    }
 
-        > .navPage-subMenu-action {
-            border-bottom: 1px solid stencilColor("navPages-subMenu-separatorColor");
-            margin-bottom: spacing("half") + spacing("quarter");
+    &:hover {
+        background: stencilColor("navPages-subMenu-backgroundColor-hover");
+        .navPage-childList {
+            display: block;
         }
     }
 }
@@ -407,6 +405,13 @@
 
 .navPage-subMenu-action {
     padding: spacing("half") 0;
+    color: #ffffff;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    &:hover {
+        color: #ffffff;
+    }
 
     @include breakpoint("medium") {
         padding: spacing("half") 0 (spacing("half") + spacing("quarter"));
@@ -425,11 +430,7 @@
         display: inline-block;
         height: 100%;
         text-align: right;
-        width: 100%;
-
-        @include breakpoint("medium") {
-            display: none;
-        }
+        width: 100%;        
     }
 }
 
@@ -440,6 +441,11 @@
 .navPage-childList-action {
     font-weight: fontWeight("normal");
     padding: 0 0 spacing("quarter");
+    color: #ffffff;
+
+    &:hover {
+        color: #ffffff;
+    }
 }
 
 

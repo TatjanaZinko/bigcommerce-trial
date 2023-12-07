@@ -14,21 +14,25 @@
     <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
         <span class="mobileMenu-toggleIcon">Toggle menu</span>
     </a>
-    {{> components/common/navigation}}
+    <div class="header-wrapper container">
+        {{#if page_type '===' 'default'}}
+            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </h1>
+        {{else}}
+            <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </div>
+        {{/if}}
 
-    {{#if page_type '===' 'default'}}
-        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </h1>
-    {{else}}
-        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
+        <div class="header-navigation-container">
+            {{> components/common/navigation}}
+            <div class="navPages-container" id="menu" data-menu>
+                {{> components/common/navigation-menu}}
+            </div>
+            {{{region name="header_navigation_bottom--global"}}}
         </div>
-    {{/if}}
-    <div class="navPages-container" id="menu" data-menu>
-        {{> components/common/navigation-menu}}
     </div>
-    {{{region name="header_navigation_bottom--global"}}}
 </header>
 {{{region name="header_bottom--global"}}}
 {{{region name="header_bottom"}}}

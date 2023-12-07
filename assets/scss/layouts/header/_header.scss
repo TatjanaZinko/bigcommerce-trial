@@ -60,7 +60,14 @@
     }
 }
 
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
 .header-logo {
+    display: flex;
+    align-items: center;
     font-size: 0;   // 1
     height: $header-height;
     margin: 0 remCalc($header-toggle-width); // 2
@@ -73,7 +80,7 @@
 
     @include breakpoint("medium") {
         height: auto;
-        margin: (spacing("double") + spacing("base")) auto (spacing("double") + spacing("single"));
+        margin: 0;
         padding: 0;
 
         .header.fixed & {

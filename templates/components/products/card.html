@@ -27,7 +27,7 @@
     {{/or}}"
 >
     <figure class="card-figure">
-        {{#if stock_level '===' 0}}
+        <!-- {{#if stock_level '===' 0}}
             {{#if theme_settings.pdp_sold_out_label '===' ''}}
                 {{> components/products/product-badge
                     badge-type='sold-out'
@@ -57,7 +57,19 @@
                     }}
                 {{/if}}
             {{/or}}
-        {{/if}}
+        {{/if}} -->
+
+        {{#filter custom_fields 'badge1' property='name' }}
+            <div class="badge">{{value}}</div>
+            {{else}}
+                {{#filter custom_fields 'badge2' property='name' }}
+                    <div class="badge">{{value}}</div>
+                    {{else}}
+                        {{#filter custom_fields 'badge3' property='name' }}
+                            <div class="badge">{{value}}</div>
+                        {{/filter}}
+                {{/filter}}
+        {{/filter}}
 
         <a href="{{url}}"
            class="card-figure__link"

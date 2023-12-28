@@ -82,6 +82,12 @@
 
         li {
             @include carouselOpaqueBackgrounds($slick-dot-bgColor);
+            button:hover::before {
+                background: stencilColor("color-primaryDark");
+            }
+            &.slick-active button::before {
+                background: stencilColor("color-primary");
+            }
         }
     }
 
